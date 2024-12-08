@@ -22,17 +22,14 @@ steps:
     cliProjectKey: '$(SONAR_PROJECT_KEY)'
     cliProjectName: '$(Build.Repository.Name)'
     cliProjectVersion: '$(Build.BuildId)'
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean install sonar:sonar'
-    options: |
+- script: |
+    mvn clean install sonar:sonar \
       -Dsonar.projectKey=$(SONAR_PROJECT_KEY) \
       -Dsonar.organization=$(SONAR_ORGANIZATION) \
       -Dsonar.host.url=https://sonarcloud.io \
       -Dsonar.login=$(SONAR_TOKEN)
+  displayName: 'Build and Run SonarCloud Analysis'
+  
 - task: SonarCloudPublish@3
   inputs:
     pollingTimeoutSec: '300'
