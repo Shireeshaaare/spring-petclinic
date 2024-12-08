@@ -9,7 +9,7 @@ variables:
   SONAR_PROJECT_KEY: 'azdevopslt_azure-devops'
   SONAR_ORGANIZATION: 'azdevopslt'
   SONAR_TOKEN: '25506995eaf522f172de92ee925a7b90a1baa299' # Add this as a secret variable in Azure DevOps
-  SONAR_PROJECT: 'azdevopslt'
+  SONAR_PROJECT: 'petclinic'
 
 
 steps:
@@ -27,7 +27,7 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: '$(SONAR_PROJECT_KEY)'       # Replace with your SonarCloud project key
-    cliProjectName: '$(PROJECT)'     # Replace with your SonarCloud project name
+    cliProjectName: '$(SONAR_PROJECT)'     # Replace with your SonarCloud project name
     cliProjectVersion: '1.0'
     extraProperties: |
       sonar.java.binaries=target/classes
