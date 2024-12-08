@@ -5,11 +5,7 @@ pool: Default
   
 
 variables:
-  MAVEN_OPTS: "-Xmx1024m"
-  SONAR_PROJECT_KEY: 'azdevopslt_azure-devops'
-  SONAR_ORGANIZATION: 'azdevopslt'
-  SONAR_TOKEN: '25506995eaf522f172de92ee925a7b90a1baa299' # Add this as a secret variable in Azure DevOps
-  SONAR_PROJECT: 'petclinic'
+  - group: springpetcliniic
 
 
 steps:
